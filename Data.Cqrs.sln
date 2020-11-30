@@ -9,7 +9,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.Data.Cqrs.Tests", "test\Olbrasoft.Data.Cqrs.Tests\Olbrasoft.Data.Cqrs.Tests.csproj", "{9E3F09CF-134F-489D-8ECA-C17BD235398A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Olbrasoft.Data.Cqrs", "src\Olbrasoft.Data.Cqrs\Olbrasoft.Data.Cqrs.csproj", "{47DBEAB5-E0F1-4F7C-9C1E-DCD6B6853467}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E3F09CF-134F-489D-8ECA-C17BD235398A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3F09CF-134F-489D-8ECA-C17BD235398A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3F09CF-134F-489D-8ECA-C17BD235398A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3F09CF-134F-489D-8ECA-C17BD235398A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47DBEAB5-E0F1-4F7C-9C1E-DCD6B6853467}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47DBEAB5-E0F1-4F7C-9C1E-DCD6B6853467}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47DBEAB5-E0F1-4F7C-9C1E-DCD6B6853467}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47DBEAB5-E0F1-4F7C-9C1E-DCD6B6853467}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
