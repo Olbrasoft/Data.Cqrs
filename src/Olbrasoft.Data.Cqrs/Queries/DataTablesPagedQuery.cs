@@ -2,13 +2,13 @@
 
 namespace Olbrasoft.Data.Cqrs.Queries
 {
-    public abstract class DataTablesPagedQuery<TResult> : PagedQuery<TResult>
+    public class DataTablesPagedQuery<TResult> : PagedQuery<TResult>
     {
-        protected DataTablesPagedQuery(IDispatcher dispatcher) : base(dispatcher)
+        public DataTablesPagedQuery(IDispatcher dispatcher) : base(dispatcher)
         {
         }
 
-        protected DataTablesPagedQuery(IRequestHandler<Request<TResult>, TResult> handler) : base(handler)
+        public DataTablesPagedQuery(IRequestHandler<Request<TResult>, TResult> handler) : base(handler)
         {
         }
 

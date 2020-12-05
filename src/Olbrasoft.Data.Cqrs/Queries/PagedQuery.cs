@@ -3,7 +3,7 @@ using Olbrasoft.Dispatching.Common;
 
 namespace Olbrasoft.Data.Cqrs.Queries
 {
-    public abstract class PagedQuery<TResult> : Request<TResult>
+    public class PagedQuery<TResult> : Request<TResult>
     {
         public PagedQuery(IRequestHandler<Request<TResult>, TResult> handler) : base(handler)
         {

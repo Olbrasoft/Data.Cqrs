@@ -1,13 +1,14 @@
 ﻿using Olbrasoft.Data.Cqrs.Queries;
+using Olbrasoft.Dispatching.Common;
 using Olbrasoft.Mapping;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Olbrasoft.Data.Cqrs.QueryHandlers
+namespace Olbrasoft.Data.Cqrs
 {
-    internal class AwesomeQueryHandler : QueryHandler<AwesomeQuery, bool>
+    public class AwesomeQueryHandler : QueryHandler<Request<string>, string>
     {
         public AwesomeQueryHandler(IProjector projector) : base(projector)
         {
@@ -18,7 +19,7 @@ namespace Olbrasoft.Data.Cqrs.QueryHandlers
             ProjectTo<string>(new List<char>().AsQueryable());
         }
 
-        public override Task<bool> HandleAsync(AwesomeQuery query, CancellationToken token)
+        public override Task<string> HandleAsync(Request<string> query, CancellationToken token)
         {
             throw new System.NotImplementedException();
         }
