@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Olbrasoft.Data.Cqrs
 {
-    public abstract class CommandHandler<TCommand, TResult> : IRequestHandler<TCommand, TResult> where TCommand : Request<TResult>
+    public abstract class CommandHandler<TCommand, TResult> : IRequestHandler<TCommand, TResult> where TCommand : IRequest<TResult>
     {
         private readonly IMapper _mapper;
 
@@ -16,7 +16,7 @@ namespace Olbrasoft.Data.Cqrs
         protected TDestination MapTo<TDestination>(object source) => _mapper.MapTo<TDestination>(source);
     }
 
-    public abstract class CommandHandler<TCommand> : CommandHandler<TCommand, bool> where TCommand : Request<bool>
+    public abstract class CommandHandler<TCommand> : CommandHandler<TCommand, bool> where TCommand : IRequest<bool>
     {
         protected CommandHandler(IMapper mapper) : base(mapper)
         {
