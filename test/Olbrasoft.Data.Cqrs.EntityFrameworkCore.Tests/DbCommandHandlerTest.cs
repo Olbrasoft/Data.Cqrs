@@ -1,5 +1,9 @@
-﻿using Moq;
+﻿using Microsoft.EntityFrameworkCore;
+using Moq;
+using Olbrasoft.Dispatching.Common;
+using Olbrasoft.Mapping;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -127,18 +131,86 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
         }
 
         [Fact]
-        public void AwesomeCommandHandler_Inherit_From_DbCommandHandler()
+        public void The_Base_Type_Name_DbCommandHandler_Is_The_Same_As_The_CommandHandler_Type_NBame()
         {
             //Arrange
-            var type = typeof(CommandHandler<,>);
-
-            var handler = typeof(DbCommandHandler<,,,>);
+            var commandHandlerTypeName = typeof(CommandHandler<,>).Name;
 
             //Act
-            var result = handler.BaseType;
+            var dbCommandHandlerTypeName = typeof(DbCommandHandler<,,,>).BaseType.Name;
 
             //Assert
-            Assert.True(type.Name == result.Name);
+            Assert.True(commandHandlerTypeName == dbCommandHandlerTypeName);
+        }
+
+        [Fact]
+        public void AwesomeCommandHandler_Inherit_From_DbCommandHandler_Of_IRequest_Of_Int_Comma_Int_Comma_DbContext_Comma_AwesomeEntity()
+        {
+            //Arrange
+            var type = typeof(DbCommandHandler<IRequest<int>, int, DbContext, AwesomeEntity>);
+
+            var handler = CreateAwesomeHandler();
+
+            //Assert
+            Assert.IsAssignableFrom(type, handler);
+        }
+
+        [Fact]
+        public void AwesomeBooleanCommandHandler_Inherit_From_DbCommandHandler_Of_IRequest_Of_Bool_Comma_DbContext_Comma_AwesomeEntity()
+        {
+            //Arrange
+            var type = typeof(DbCommandHandler<IRequest<bool>, DbContext, AwesomeEntity>);
+            var factoryMock = new Mock<IDbContextFactory<DbContext>>();
+            var mapperMock = new Mock<IMapper>();
+
+            //Act
+            var handler = new AwesomeBooleanCommandHandler(mapperMock.Object, factoryMock.Object);
+
+            //Assert
+            Assert.IsAssignableFrom(type, handler);
+        }
+
+        private static AwesomeCommandHandler CreateAwesomeHandler()
+        {
+            var factoryMock = new Mock<IDbContextFactory<DbContext>>();
+
+            var contextMock = new Mock<DbContext>();
+            var setMock = new Mock<DbSet<AwesomeEntity>>();
+            factoryMock.Setup(p => p.CreateDbContext()).Returns(contextMock.Object);
+
+            contextMock.Setup(p => p.Set<AwesomeEntity>()).Returns(setMock.Object);
+
+            var mapperMock = new Mock<IMapper>();
+
+            //Act
+            var handler = new AwesomeCommandHandler(mapperMock.Object, factoryMock.Object);
+            return handler;
+        }
+
+        [Fact]
+        public void Protected_Property_Context_Return_Type_DbContext()
+        {
+            //Arrange
+            var handler = CreateAwesomeHandler();
+
+            //Act
+            var context = handler.GetProtectedPropertyContext();
+
+            //Assert
+            Assert.IsAssignableFrom<DbContext>(context);
+        }
+
+        [Fact]
+        public void Protected_Property_Set_Return_DbSet_Of_TEntity()
+        {
+            //Arrange
+            var handler = CreateAwesomeHandler();
+
+            //Act
+            var set = handler.GetProtectedPropertyEntities();
+
+            //Assert
+            Assert.IsAssignableFrom<DbSet<AwesomeEntity>>(set);
         }
     }
 }

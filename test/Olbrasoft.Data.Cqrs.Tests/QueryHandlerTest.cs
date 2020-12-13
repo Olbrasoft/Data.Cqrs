@@ -47,7 +47,7 @@ namespace Olbrasoft.Data.Cqrs
         public void AwesomeBooleanQueryHandler_Inherit_From_QueryHandler_Of_Request_Of_Bool()
         {
             //Arrange
-            var type = typeof(QueryHandler<Request<bool>>);
+            var type = typeof(QueryHandler<IRequest<bool>>);
 
             //Act
             var handler = new AwesomeBooleanQueryHandler();

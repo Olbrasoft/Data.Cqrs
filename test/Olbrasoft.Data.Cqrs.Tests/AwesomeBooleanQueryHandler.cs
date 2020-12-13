@@ -4,9 +4,13 @@ using System.Threading.Tasks;
 
 namespace Olbrasoft.Data.Cqrs
 {
-    public class AwesomeBooleanQueryHandler : QueryHandler<Request<bool>>
+    internal class AwesomeBooleanQueryHandler : QueryHandler<IRequest<bool>>
     {
-        public override Task<bool> HandleAsync(Request<bool> query, CancellationToken token)
+        public AwesomeBooleanQueryHandler()
+        {
+        }
+
+        public override Task<bool> HandleAsync(IRequest<bool> query, CancellationToken token)
         {
             throw new System.NotImplementedException();
         }

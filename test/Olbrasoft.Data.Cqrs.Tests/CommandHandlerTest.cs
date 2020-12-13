@@ -41,39 +41,12 @@ namespace Olbrasoft.Data.Cqrs
         }
 
         [Fact]
-        public void AwesomeHandler_Inherit_From_CommandHandler_Of_Request_Of_Bool()
-        {
-            //Arrange
-            var type = typeof(CommandHandler<Request<bool>>);
-
-            //Act
-            var handler = new AwesomeCommandHandler(CreateMapperMock().Object);
-
-            //Assert
-            Assert.IsAssignableFrom(type, handler);
-        }
-
-        [Fact]
         //The CommandHandler's TCommand generic
         public void A_CommandHandler_With_Two_Generic_Arguments_TCommand_Constraint_Name_Is_IRequest_Of()
         {
             //Arrange
             var typeName = typeof(IRequest<>).Name;
             var argument = typeof(CommandHandler<,>).GetGenericArguments()[0];
-
-            //Act
-            var constraintName = argument.GetGenericParameterConstraints()[0].Name;
-
-            //Assert
-            Assert.True(typeName == constraintName);
-        }
-
-        [Fact]
-        public void A_CommandHandler_With_One_Generic_Arguments_TCommand_Constraint_Name_Is_IRequest_Of_Bool()
-        {
-            //Arrange
-            var typeName = typeof(IRequest<bool>).Name;
-            var argument = typeof(CommandHandler<>).GetGenericArguments()[0];
 
             //Act
             var constraintName = argument.GetGenericParameterConstraints()[0].Name;

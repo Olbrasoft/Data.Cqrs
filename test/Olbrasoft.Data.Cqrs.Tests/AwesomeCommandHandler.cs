@@ -22,16 +22,4 @@ namespace Olbrasoft.Data.Cqrs
             throw new NotImplementedException();
         }
     }
-
-    public class AwesomeCommandHandler : CommandHandler<Request<bool>>
-    {
-        public AwesomeCommandHandler(IMapper mapper) : base(mapper)
-        {
-        }
-
-        public override Task<bool> HandleAsync(Request<bool> command, CancellationToken token)
-        {
-            throw new NotImplementedException();
-        }
-    }
 }

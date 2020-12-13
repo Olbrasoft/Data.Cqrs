@@ -12,6 +12,7 @@
     <PackageIcon>olbrasoft-data-cqrs.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Command, Query, CommandHandler, QueryHandler, CQRS</PackageTags>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

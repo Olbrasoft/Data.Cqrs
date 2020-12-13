@@ -10,7 +10,7 @@ namespace Olbrasoft.Data.Cqrs
     {
         private readonly IProjector _projector;
 
-        public QueryHandler(IProjector projector) => _projector = projector;
+        protected QueryHandler(IProjector projector) => _projector = projector;
 
         public abstract Task<TResult> HandleAsync(TQuery query, CancellationToken token);
 

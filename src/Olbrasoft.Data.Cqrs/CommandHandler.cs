@@ -15,11 +15,4 @@ namespace Olbrasoft.Data.Cqrs
 
         protected TDestination MapTo<TDestination>(object source) => _mapper.MapTo<TDestination>(source);
     }
-
-    public abstract class CommandHandler<TCommand> : CommandHandler<TCommand, bool> where TCommand : IRequest<bool>
-    {
-        protected CommandHandler(IMapper mapper) : base(mapper)
-        {
-        }
-    }
 }
