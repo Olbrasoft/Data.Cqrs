@@ -1,7 +1,7 @@
-﻿using Moq;
-using Olbrasoft.Dispatching.Common;
+﻿using System;
+using Moq;
+using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
-using System.Linq;
 using Xunit;
 
 namespace Olbrasoft.Data.Cqrs
@@ -53,6 +53,20 @@ namespace Olbrasoft.Data.Cqrs
 
             //Assert
             Assert.True(typeName == constraintName);
+        }
+
+        [Fact]
+        public void CommandHandler_Throw_ArgumentNullException_When_Mapper_Is_Null()
+        {
+            //Arrange
+            IMapper mapper = null;
+
+            //Act
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var ex = Assert.Throws<ArgumentNullException>(() => new AwesomeCommandHandler<Request<bool>, bool>(mapper));
+
+            //Assert
+            Assert.True(ex.Message is "Value cannot be null. (Parameter 'mapper')");
         }
     }
 }

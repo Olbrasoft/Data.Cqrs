@@ -1,20 +1,30 @@
-﻿using Olbrasoft.Dispatching.Common;
+﻿using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Olbrasoft.Data.Cqrs
 {
-    public abstract class QueryHandler<TQuery, TResult> : IRequestHandler<TQuery, TResult> where TQuery : IRequest<TResult>
+    public abstract class QueryHandler<TQuery, TResult> : IRequestHandler<TQuery, TResult>
+        where TQuery : IRequest<TResult>
     {
         private readonly IProjector _projector;
 
-        protected QueryHandler(IProjector projector) => _projector = projector;
+        protected QueryHandler(IProjector projector)
+        {
+            _projector = projector ?? throw new ArgumentNullException(nameof(projector));
+        }
 
         public abstract Task<TResult> HandleAsync(TQuery query, CancellationToken token);
 
-        protected IQueryable<TDestination> ProjectTo<TDestination>(IQueryable source) => _projector.ProjectTo<TDestination>(source);
+        protected IQueryable<TDestination> ProjectTo<TDestination>(IQueryable source)
+        {
+            return source is null
+                ? throw new ArgumentNullException(nameof(source))
+                : _projector.ProjectTo<TDestination>(source);
+        }
     }
 
     public abstract class QueryHandler<TQuery> : IRequestHandler<TQuery, bool> where TQuery : IRequest<bool>

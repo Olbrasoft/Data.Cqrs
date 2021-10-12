@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Olbrasoft.Dispatching.Common;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
 
 namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
@@ -17,7 +18,7 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
 
         protected DbCommandHandler(IMapper mapper, IDbContextFactory<TContext> factory) : base(mapper)
         {
-            _contextFactory = factory;
+            _contextFactory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
     }
 

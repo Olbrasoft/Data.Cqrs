@@ -1,10 +1,9 @@
-﻿using Olbrasoft.Data.Cqrs.Queries;
-using Olbrasoft.Dispatching.Common;
-using Olbrasoft.Mapping;
+﻿using Olbrasoft.Mapping;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Olbrasoft.Dispatching.Abstractions;
 
 namespace Olbrasoft.Data.Cqrs
 {
@@ -22,6 +21,11 @@ namespace Olbrasoft.Data.Cqrs
         public override Task<string> HandleAsync(Request<string> query, CancellationToken token)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void CallProjectToWithNullSource()
+        {
+            ProjectTo<string>(null);
         }
     }
 }

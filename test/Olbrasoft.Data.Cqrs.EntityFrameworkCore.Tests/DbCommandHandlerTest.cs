@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
-using Olbrasoft.Dispatching.Common;
 using Olbrasoft.Mapping;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using Olbrasoft.Dispatching.Abstractions;
 using Xunit;
 
 namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
@@ -211,6 +210,19 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
 
             //Assert
             Assert.IsAssignableFrom<DbSet<AwesomeEntity>>(set);
+        }
+
+        [Fact]
+        public void DbCommandHandler_Throw_ArgumentNullException_When_Factory_Is_Null()
+        {
+            //Arrange
+            var mapperMock = new Mock<IMapper>();
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => new AwesomeCommandHandler(mapperMock.Object, null));
+
+            //Assert
+            Assert.True(ex.Message is "Value cannot be null. (Parameter 'factory')");
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Olbrasoft.Dispatching.Common;
+using Olbrasoft.Dispatching.Abstractions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -7,7 +7,7 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
 {
     internal class AwesomeBooleanQueryHandler : DbQueryHandler<IRequest<bool>, DbContext, AwesomeEntity>
     {
-        public AwesomeBooleanQueryHandler(IDbContextFactory<DbContext> contextFactory) : base(contextFactory)
+        public AwesomeBooleanQueryHandler(IDbContextFactory<DbContext> factory) : base(factory)
         {
         }
 

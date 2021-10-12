@@ -12,12 +12,12 @@
     <PackageIcon>olbrasoft-data-cqrs.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Command, Query, CommandHandler, QueryHandler, CQRS</PackageTags>
-    <Version>1.0.2</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Olbrasoft.Data" Version="1.0.1" />
-    <PackageReference Include="Olbrasoft.Dispatching.Common" Version="1.0.0" />
+    <PackageReference Include="Olbrasoft.Dispatching.Abstractions" Version="1.1.1" />
     <PackageReference Include="Olbrasoft.Mapping" Version="1.0.2" />
   </ItemGroup>
 

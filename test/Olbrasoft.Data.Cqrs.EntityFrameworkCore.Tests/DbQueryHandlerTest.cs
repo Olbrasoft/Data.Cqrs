@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
-using Olbrasoft.Dispatching.Common;
+using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -135,6 +136,29 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
             factoryMock.Setup(p => p.CreateDbContext()).Returns(contextMock.Object);
 
             return factoryMock.Object;
+        }
+
+        [Fact]
+        public void DbQueryHandler_Throw_ArgumentNullException_When_Factory_Is_Null()
+        {
+            //Arrange
+            var projectorMock = new Mock<IProjector>();
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>((() => new AwesomeQueryHandler(projectorMock.Object, null)));
+
+            //Assert
+            Assert.True(ex.Message is "Value cannot be null. (Parameter 'factory')");
+        }
+
+        [Fact]
+        public void BooleanDbQueryHandler_Throw_ArgumentNullException_When_Factory_Is_Null()
+        {
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => new AwesomeBooleanQueryHandler(null));
+
+            //Assert
+            Assert.True(ex.Message is "Value cannot be null. (Parameter 'factory')");
         }
     }
 }

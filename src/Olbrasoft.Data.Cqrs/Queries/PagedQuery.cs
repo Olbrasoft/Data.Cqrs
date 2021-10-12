@@ -1,5 +1,5 @@
 ﻿using Olbrasoft.Data.Paging;
-using Olbrasoft.Dispatching.Common;
+using Olbrasoft.Dispatching.Abstractions;
 
 namespace Olbrasoft.Data.Cqrs.Queries
 {

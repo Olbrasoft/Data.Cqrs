@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Olbrasoft.Dispatching.Common;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
 using System.Linq;
 
@@ -14,9 +15,9 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
         protected TContext Context => _context ??= _contextFactory.CreateDbContext();
         protected IQueryable<TEntity> Entities => _entities ??= Context.Set<TEntity>();
 
-        protected DbQueryHandler(IProjector projector, IDbContextFactory<TContext> contextFactory) : base(projector)
+        protected DbQueryHandler(IProjector projector, IDbContextFactory<TContext> factory) : base(projector)
         {
-            _contextFactory = contextFactory;
+            _contextFactory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
     }
 
@@ -29,9 +30,9 @@ namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore
         protected TContext Context => _context ??= _contextFactory.CreateDbContext();
         protected IQueryable<TEntity> Entities => _entities ??= Context.Set<TEntity>();
 
-        protected DbQueryHandler(IDbContextFactory<TContext> contextFactory)
+        protected DbQueryHandler(IDbContextFactory<TContext> factory)
         {
-            _contextFactory = contextFactory;
+            _contextFactory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
     }
 }

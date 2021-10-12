@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Dispatching.Common;
+﻿using System;
+using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,7 +10,10 @@ namespace Olbrasoft.Data.Cqrs
     {
         private readonly IMapper _mapper;
 
-        protected CommandHandler(IMapper mapper) => _mapper = mapper;
+        protected CommandHandler(IMapper mapper)
+        {
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        }
 
         public abstract Task<TResult> HandleAsync(TCommand command, CancellationToken token);
 

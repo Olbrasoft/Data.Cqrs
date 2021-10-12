@@ -1,7 +1,7 @@
 ﻿using Moq;
-using Olbrasoft.Data.Cqrs.Queries;
-using Olbrasoft.Dispatching.Common;
+using Olbrasoft.Dispatching.Abstractions;
 using Olbrasoft.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -29,7 +29,7 @@ namespace Olbrasoft.Data.Cqrs
         }
 
         [Fact]
-        public void ProjectTo_Call_Method_ProjectTo_On_Projector()
+        public void CallProjectTo_Call_Method_ProjectTo_On_Projector()
         {
             //Arrange
             var projectorMock = CreateProjectorMock();
@@ -44,6 +44,20 @@ namespace Olbrasoft.Data.Cqrs
         }
 
         [Fact]
+        public void ProjectTo_Throw_ArgumentNullException_When_Source_Is_Null()
+        {
+            //Arrange
+            var projectorMock = CreateProjectorMock();
+            var handler = new AwesomeQueryHandler(projectorMock.Object);
+
+            //Act
+            var ex = Assert.Throws<ArgumentNullException>(() => handler.CallProjectToWithNullSource());
+
+            //Assert
+            Assert.True(ex.Message is "Value cannot be null. (Parameter 'source')");
+        }
+
+        [Fact]
         public void AwesomeBooleanQueryHandler_Inherit_From_QueryHandler_Of_Request_Of_Bool()
         {
             //Arrange
@@ -54,6 +68,20 @@ namespace Olbrasoft.Data.Cqrs
 
             //Assert
             Assert.IsAssignableFrom(type, handler);
+        }
+
+        [Fact]
+        public void QueryHandler_Throw_ArgumentNullException_When_Projector_Is_Null()
+        {
+            //Arrange
+            IProjector projector = null;
+
+            //Act
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var ex = Assert.Throws<ArgumentNullException>(() => new AwesomeQueryHandler(projector));
+
+            //Assert
+            Assert.True(ex.Message is "Value cannot be null. (Parameter 'projector')");
         }
     }
 }

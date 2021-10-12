@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/Olbrasoft/Data.Cqrs</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>CQS CQRS EntityFrameworkCore</PackageTags>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
-    <PackageReference Include="Olbrasoft.Data.Cqrs" Version="1.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Olbrasoft.Data.Cqrs" Version="1.2.0" />
   </ItemGroup>
 </Project>
