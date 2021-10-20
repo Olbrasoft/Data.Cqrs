@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Dispatching.Abstractions;
+﻿using Olbrasoft.Dispatching;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +10,7 @@ namespace Olbrasoft.Data.Cqrs
         {
         }
 
-        public override Task<bool> HandleAsync(IRequest<bool> query, CancellationToken token)
+        public override Task<bool> HandleAsync(IRequest<bool> query, CancellationToken token = default)
         {
             throw new System.NotImplementedException();
         }

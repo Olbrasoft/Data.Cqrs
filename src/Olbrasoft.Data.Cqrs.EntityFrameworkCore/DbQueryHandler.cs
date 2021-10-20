@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Olbrasoft.Dispatching.Abstractions;
+﻿using Microsoft.EntityFrameworkCore;
+using Olbrasoft.Dispatching;
 using Olbrasoft.Mapping;
+using System;
 using System.Linq;
 
 namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore

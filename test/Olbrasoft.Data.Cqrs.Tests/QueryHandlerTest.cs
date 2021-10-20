@@ -1,5 +1,5 @@
 ﻿using Moq;
-using Olbrasoft.Dispatching.Abstractions;
+using Olbrasoft.Dispatching;
 using Olbrasoft.Mapping;
 using System;
 using System.Collections.Generic;

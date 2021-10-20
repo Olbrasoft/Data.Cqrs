@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Olbrasoft.Dispatching.Abstractions;
+using Olbrasoft.Dispatching;
 using Olbrasoft.Mapping;
 using System.Linq;
 using System.Threading;

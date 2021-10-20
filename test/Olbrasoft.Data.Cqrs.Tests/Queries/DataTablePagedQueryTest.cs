@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Olbrasoft.Data.Sorting;
+using Xunit;
 
 namespace Olbrasoft.Data.Cqrs.Queries
 {

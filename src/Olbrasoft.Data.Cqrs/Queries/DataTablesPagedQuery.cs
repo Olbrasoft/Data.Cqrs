@@ -1,4 +1,5 @@
-﻿using Olbrasoft.Dispatching.Abstractions;
+﻿using Olbrasoft.Data.Sorting;
+using Olbrasoft.Dispatching;
 
 namespace Olbrasoft.Data.Cqrs.Queries
 {

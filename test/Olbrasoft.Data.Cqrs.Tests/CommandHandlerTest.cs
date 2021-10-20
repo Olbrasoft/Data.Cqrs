@@ -1,7 +1,7 @@
-﻿using System;
-using Moq;
-using Olbrasoft.Dispatching.Abstractions;
+﻿using Moq;
+using Olbrasoft.Dispatching;
 using Olbrasoft.Mapping;
+using System;
 using Xunit;
 
 namespace Olbrasoft.Data.Cqrs

@@ -1,9 +1,9 @@
-﻿using Olbrasoft.Mapping;
+﻿using Olbrasoft.Dispatching;
+using Olbrasoft.Mapping;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Olbrasoft.Dispatching.Abstractions;
 
 namespace Olbrasoft.Data.Cqrs
 {

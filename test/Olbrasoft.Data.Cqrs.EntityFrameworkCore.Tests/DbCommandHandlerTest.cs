@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Moq;
+using Olbrasoft.Dispatching;
 using Olbrasoft.Mapping;
 using System;
 using System.Linq;
-using Olbrasoft.Dispatching.Abstractions;
 using Xunit;
 
 namespace Olbrasoft.Data.Cqrs.EntityFrameworkCore

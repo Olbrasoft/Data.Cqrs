@@ -2,7 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Olbrasoft.Dispatching.Abstractions;
+using Olbrasoft.Dispatching;
 
 namespace Olbrasoft.Data.Cqrs
 {

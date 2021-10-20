@@ -1,6 +1,6 @@
-﻿using System;
-using Olbrasoft.Dispatching.Abstractions;
+﻿using Olbrasoft.Dispatching;
 using Olbrasoft.Mapping;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,7 +15,7 @@ namespace Olbrasoft.Data.Cqrs
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public abstract Task<TResult> HandleAsync(TCommand command, CancellationToken token);
+        public abstract Task<TResult> HandleAsync(TCommand command, CancellationToken token = default);
 
         protected TDestination MapTo<TDestination>(object source) => _mapper.MapTo<TDestination>(source);
     }

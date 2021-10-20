@@ -26,7 +26,7 @@ namespace Olbrasoft.Data.Cqrs.Requests
         public void BooleanRequestWithIdAndCreatorId_Has_A_CreatorId_Property_Of_Type_Integer()
         {
             //Arrange
-            var request = new ByIdAndCreatorIdRequest(BoleanHandlerMock.Object);
+            var request = new ByIdAndCreatorIdRequest(BooleanHandlerMock.Object);
 
             //Act
             var creatorId = request.CreatorId;

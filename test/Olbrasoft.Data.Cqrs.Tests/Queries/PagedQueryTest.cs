@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Dispatching.Abstractions;
+﻿using Olbrasoft.Dispatching;
 using Xunit;
 
 namespace Olbrasoft.Data.Cqrs.Queries

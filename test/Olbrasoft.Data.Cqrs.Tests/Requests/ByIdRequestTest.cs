@@ -1,4 +1,4 @@
-﻿using Olbrasoft.Dispatching.Abstractions;
+﻿using Olbrasoft.Dispatching;
 using Xunit;
 
 namespace Olbrasoft.Data.Cqrs.Requests
@@ -51,7 +51,7 @@ namespace Olbrasoft.Data.Cqrs.Requests
         public async System.Threading.Tasks.Task ExecuteAsync_Call_HandleAsync()
         {
             //Arrange
-            var handlerMock = BoleanHandlerMock;
+            var handlerMock = BooleanHandlerMock;
             var request = new ByIdRequest(handlerMock.Object);
 
             //Act
