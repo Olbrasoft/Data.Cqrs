@@ -1,20 +1,18 @@
 ﻿using Olbrasoft.Data.Sorting;
-using Olbrasoft.Dispatching;
 
-namespace Olbrasoft.Data.Cqrs.Queries
+namespace Olbrasoft.Data.Cqrs.Queries;
+
+public class DataTablesPagedQuery<TResult> : PagedQuery<TResult>
 {
-    public class DataTablesPagedQuery<TResult> : PagedQuery<TResult>
+    public OrderDirection OrderByDirection { get; set; }
+    public string Search { get; set; }
+    public string OrderByColumnName { get; set; }
+
+    public DataTablesPagedQuery(IDispatcher dispatcher) : base(dispatcher)
     {
-        public OrderDirection OrderByDirection { get; set; }
-        public string Search { get; set; }
-        public string OrderByColumnName { get; set; }
+    }
 
-        public DataTablesPagedQuery(IDispatcher dispatcher) : base(dispatcher)
-        {
-        }
-
-        public DataTablesPagedQuery(IRequestHandler<Request<TResult>, TResult> handler) : base(handler)
-        {
-        }
+    public DataTablesPagedQuery(IRequestHandler<Request<TResult>, TResult> handler) : base(handler)
+    {
     }
 }
